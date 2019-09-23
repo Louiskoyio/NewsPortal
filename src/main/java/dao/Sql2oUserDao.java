@@ -1,19 +1,50 @@
 package dao;
 
-public class Sql2oUserDao {
+import models.User;
+import org.sql2o.Connection;
+import org.sql2o.Sql2o;
+import org.sql2o.Sql2oException;
+
+import java.util.List;
+
+public class Sql2oUserDao implements UserDao{
+
+    private final Sql2o sql2o;
+
+    public Sql2oUserDao(Sql2o sql2o) { this.sql2o = sql2o; }
 
     @Override
-    public void add(Squad squad) {
-        String sql = "INSERT INTO squads (name,objective) VALUES (:name,:objective)"; //raw sql
-        try(Connection con = sql2o.open()){ //try to open a connection
-            int id = (int) con.createQuery(sql, true) //make a new variable
-                    .bind(squad)
+    public void add(User user) {
+        String sql = "INSERT INTO users (name,objective) VALUES (:name,:objective)";
+        try(Connection con = sql2o.open()){
+            int employee_id = (int) con.createQuery(sql, true)
+                    .bind(user)
                     .throwOnMappingFailure(false)
                     .executeUpdate()
                     .getKey();
-            squad.setId(id);
+            user.setEmployee_id(employee_id);
         } catch (Sql2oException ex) {
-            System.out.println(ex); //oops we have an error!
+            System.out.println(ex);
         }
+    }
+
+    @Override
+    public void editUser(int user_id){
+
+    }
+
+    @Override
+    public void deleteUser(int user_id){
+
+    }
+
+    @Override
+    public List<User> getAll(){
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM users")
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(User.class);
+        }
+
     }
 }
