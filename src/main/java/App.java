@@ -66,5 +66,9 @@ public class App {
             return gson.toJson(userDao.findById(employee_id));
         });
 
+        after((req, res) ->{
+            res.type("application/json");
+        });
+
     }
 }
