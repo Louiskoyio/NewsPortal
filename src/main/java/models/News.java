@@ -8,14 +8,14 @@ import java.util.Objects;
 public class News {
     private int news_id;
     private String posted_by;
-    private String department;
+    private int department_id;
     private String news_content;
     private Date posted_on;
 
-    public News(int news_id, String posted_by, String department, String news_content, Date posted_on) {
+    public News(int news_id, String posted_by, int department_id, String news_content, Date posted_on) {
         this.news_id = news_id;
         this.posted_by = posted_by;
-        this.department = department;
+        this.department_id = department_id;
         this.news_content = news_content;
         this.posted_on = posted_on;
     }
@@ -36,12 +36,12 @@ public class News {
         this.posted_by = posted_by;
     }
 
-    public String getDepartment() {
-        return department;
+    public int getDepartment() {
+        return department_id;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setDepartment(int department_id) {
+        this.department_id = department_id;
     }
 
     public String getNews_content() {
@@ -67,13 +67,13 @@ public class News {
         News news = (News) o;
         return news_id == news.news_id &&
                 Objects.equals(posted_by, news.posted_by) &&
-                Objects.equals(department, news.department) &&
+                Objects.equals(department_id, news.department_id) &&
                 Objects.equals(news_content, news.news_content) &&
                 Objects.equals(posted_on, news.posted_on);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(news_id, posted_by, department, news_content, posted_on);
+        return Objects.hash(news_id, posted_by, department_id, news_content, posted_on);
     }
 }
