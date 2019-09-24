@@ -12,8 +12,7 @@ public class News {
     private String news_content;
     private long posted_on;
 
-    public News(int news_id, String posted_by, int department_id, String news_content, long posted_on) {
-        this.news_id = news_id;
+    public News(String posted_by, int department_id, String news_content, long posted_on) {
         this.posted_by = posted_by;
         this.department_id = department_id;
         this.news_content = news_content;

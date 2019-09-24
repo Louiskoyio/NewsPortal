@@ -12,8 +12,7 @@ public class User {
     private String employee_role;
     private int department_id;
 
-    public User(int employee_id, String fname, String lname, String position, String employee_role, int department_id) {
-        this.employee_id = employee_id;
+    public User(String fname, String lname, String position, String employee_role, int department_id) {
         this.fname = fname;
         this.lname = lname;
         this.position = position;

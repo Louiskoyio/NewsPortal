@@ -10,8 +10,7 @@ public class Department {
     private String department_name;
     private String description;
 
-    public Department(int department_id, String department_name, String description) {
-        this.department_id = department_id;
+    public Department(String department_name, String description) {
         this.department_name = department_name;
         this.description = description;
     }
