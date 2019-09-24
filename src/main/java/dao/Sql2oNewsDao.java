@@ -13,10 +13,10 @@ public class Sql2oNewsDao implements NewsDao{
     private final Sql2o sql2o;
 
     public Sql2oNewsDao(Sql2o sql2o) { this.sql2o = sql2o; }
-
+//news_id, String posted_by, int department_id, String news_content, Date posted_on
     @Override
     public void add(News news) {
-        String sql = "INSERT INTO news (name,objective) VALUES (:name,:objective)";
+        String sql = "INSERT INTO news (department_id, news_content, posted_by, posted_on) VALUES (:department_id, :news_content, :posted_by, :posted_on)";
         try(Connection con = sql2o.open()){
             int news_id = (int) con.createQuery(sql, true)
                     .bind(news)
@@ -42,7 +42,7 @@ public class Sql2oNewsDao implements NewsDao{
     @Override
     public List<News> getAll(){
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM newss")
+            return con.createQuery("SELECT * FROM news")
                     .throwOnMappingFailure(false)
                     .executeAndFetch(News.class);
         }
