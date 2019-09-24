@@ -10,15 +10,15 @@ public class User {
     private String lname;
     private String position;
     private String employee_role;
-    private String department;
+    private int department_id;
 
-    public User(int employee_id, String fname, String lname, String position, String employee_role, String department) {
+    public User(int employee_id, String fname, String lname, String position, String employee_role, int department_id) {
         this.employee_id = employee_id;
         this.fname = fname;
         this.lname = lname;
         this.position = position;
         this.employee_role = employee_role;
-        this.department = department;
+        this.department_id = department_id;
     }
 
     public int getEmployee_id() {
@@ -61,12 +61,12 @@ public class User {
         this.employee_role = employee_role;
     }
 
-    public String getDepartment() {
-        return department;
+    public int getDepartment() {
+        return department_id;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setDepartment(int department) {
+        this.department_id = department_id;
     }
 
     @Override
@@ -79,11 +79,11 @@ public class User {
                 Objects.equals(lname, user.lname) &&
                 Objects.equals(position, user.position) &&
                 Objects.equals(employee_role, user.employee_role) &&
-                Objects.equals(department, user.department);
+                Objects.equals(department_id, user.department_id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(employee_id, fname, lname, position, employee_role, department);
+        return Objects.hash(employee_id, fname, lname, position, employee_role, department_id);
     }
 }

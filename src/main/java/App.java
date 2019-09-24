@@ -66,6 +66,21 @@ public class App {
             return gson.toJson(userDao.findById(employee_id));
         });
 
+        get("/departments/:department_id/news", "application/json", (req, res) -> { //accept a request in format JSON from an app
+            res.type("application/json");
+            int department_id = Integer.parseInt(req.params("department_id"));
+            res.type("application/json");
+            return gson.toJson(departmentDao.departmentNews(department_id));
+        });
+
+        get("/departments/:department_id/users", "application/json", (req, res) -> { //accept a request in format JSON from an app
+            res.type("application/json");
+            int department_id = Integer.parseInt(req.params("department_id"));
+            res.type("application/json");
+            return gson.toJson(departmentDao.departmentNews(department_id));
+        });
+
+
         post("/departments/:department_id/news/new", "application/json", (req, res) -> {
             int department_id = Integer.parseInt(req.params("department_id"));
             News news = gson.fromJson(req.body(), News.class);
@@ -74,6 +89,8 @@ public class App {
             res.status(201);
             return gson.toJson(news);
         });
+
+
 
         after((req, res) ->{
             res.type("application/json");

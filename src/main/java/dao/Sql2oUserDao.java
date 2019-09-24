@@ -56,4 +56,13 @@ public class Sql2oUserDao implements UserDao{
                     .executeAndFetchFirst(User.class); //fetch an individual item
         }
     }
+
+    @Override
+    public List<User> departmentEmployees(int department_id) {
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM users WHERE department_id = :department_id ")
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(User.class);
+        }
+    }
 }
