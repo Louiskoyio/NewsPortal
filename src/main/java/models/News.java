@@ -1,6 +1,7 @@
 package models;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -10,13 +11,13 @@ public class News {
     private String posted_by;
     private int department_id;
     private String news_content;
-    private long posted_on;
+    private String posted_on;
 
-    public News(String posted_by, int department_id, String news_content, long posted_on) {
+    public News(String posted_by, int department_id, String news_content, String posted_on) {
         this.posted_by = posted_by;
         this.department_id = department_id;
         this.news_content = news_content;
-        this.posted_on = System.currentTimeMillis();
+        this.posted_on = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss").format(new Date());
     }
 
     public int getNews_id() {
@@ -51,12 +52,12 @@ public class News {
         this.news_content = news_content;
     }
 
-    public long getPosted_on() {
+    public String getPosted_on() {
         return posted_on;
     }
 
     public void setPosted_on(long posted_on) {
-        this.posted_on = System.currentTimeMillis();
+        this.posted_on = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss").format(new Date());
     }
 
     @Override
