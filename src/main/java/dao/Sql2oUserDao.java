@@ -12,10 +12,10 @@ public class Sql2oUserDao implements UserDao{
     private final Sql2o sql2o;
 
     public Sql2oUserDao(Sql2o sql2o) { this.sql2o = sql2o; }
-
+//employee_id, String fname, String lname, String position, String employee_role, String department
     @Override
     public void add(User user) {
-        String sql = "INSERT INTO users (name,objective) VALUES (:name,:objective)";
+        String sql = "INSERT INTO users (fname,lname,position,employee_role,department) VALUES (:fname,:lname,:position,:employee_role,:department)";
         try(Connection con = sql2o.open()){
             int employee_id = (int) con.createQuery(sql, true)
                     .bind(user)
@@ -46,5 +46,14 @@ public class Sql2oUserDao implements UserDao{
                     .executeAndFetch(User.class);
         }
 
+    }
+    @Override
+    public User findById(int employee_id) {
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM users WHERE employee_id = :employee_id")
+                    .addParameter("employee_id", employee_id) //key/value pair, key must match above
+                    .throwOnMappingFailure(false)
+                    .executeAndFetchFirst(User.class); //fetch an individual item
+        }
     }
 }
