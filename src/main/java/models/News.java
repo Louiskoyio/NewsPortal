@@ -10,14 +10,14 @@ public class News {
     private String posted_by;
     private int department_id;
     private String news_content;
-    private Date posted_on;
+    private long posted_on;
 
-    public News(int news_id, String posted_by, int department_id, String news_content, Date posted_on) {
+    public News(int news_id, String posted_by, int department_id, String news_content, long posted_on) {
         this.news_id = news_id;
         this.posted_by = posted_by;
         this.department_id = department_id;
         this.news_content = news_content;
-        this.posted_on = posted_on;
+        this.posted_on = System.currentTimeMillis();
     }
 
     public int getNews_id() {
@@ -52,12 +52,12 @@ public class News {
         this.news_content = news_content;
     }
 
-    public Date getPosted_on() {
+    public long getPosted_on() {
         return posted_on;
     }
 
-    public void setPosted_on(Date posted_on) {
-        this.posted_on = Calendar.getInstance().getTime();;
+    public void setPosted_on(long posted_on) {
+        this.posted_on = System.currentTimeMillis();
     }
 
     @Override

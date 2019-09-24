@@ -7,12 +7,6 @@ import models.News;
 import models.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
-import spark.ModelAndView;
-import spark.template.handlebars.HandlebarsTemplateEngine;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import static spark.Spark.*;
 
 public class App {
@@ -54,30 +48,35 @@ public class App {
             return gson.toJson(department);
         });
 
-        get("/news", "application/json", (req, res) -> { //accept a request in format JSON from an app
+        get("/users", "application/json", (req, res) -> {
             res.type("application/json");
-            return gson.toJson(newsDao.getAll());//send it back to be displayed
+            return gson.toJson(userDao.getAll());
         });
 
-        get("/users/:id", "application/json", (req, res) -> { //accept a request in format JSON from an app
+        get("/news", "application/json", (req, res) -> {
+            res.type("application/json");
+            return gson.toJson(newsDao.getAll());
+        });
+
+        get("/users/:id", "application/json", (req, res) -> {
             res.type("application/json");
             int employee_id = Integer.parseInt(req.params("employee_id"));
             res.type("application/json");
             return gson.toJson(userDao.findById(employee_id));
         });
 
-        get("/departments/:department_id/news", "application/json", (req, res) -> { //accept a request in format JSON from an app
+        get("/departments/:department_id/news", "application/json", (req, res) -> {
             res.type("application/json");
             int department_id = Integer.parseInt(req.params("department_id"));
             res.type("application/json");
             return gson.toJson(departmentDao.departmentNews(department_id));
         });
 
-        get("/departments/:department_id/users", "application/json", (req, res) -> { //accept a request in format JSON from an app
+        get("/departments/:department_id/users", "application/json", (req, res) -> {
             res.type("application/json");
             int department_id = Integer.parseInt(req.params("department_id"));
             res.type("application/json");
-            return gson.toJson(departmentDao.departmentNews(department_id));
+            return gson.toJson(userDao.departmentEmployees(department_id));
         });
 
 
