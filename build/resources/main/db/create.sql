@@ -22,3 +22,6 @@ news_id int PRIMARY KEY AUTO_INCREMENT,
    news_content VARCHAR,
     posted_on DATE
     );
+
+
+INSERT INTO users (fname,lname,position,employee_role,department) values ('Admin','Admin','Admin','Admin Stuff','1');
