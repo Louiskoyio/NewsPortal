@@ -15,7 +15,7 @@ public class Sql2oUserDao implements UserDao{
 //employee_id, String fname, String lname, String position, String employee_role, String department
     @Override
     public void add(User user) {
-        String sql = "INSERT INTO users (fname,lname,position,employee_role,department) VALUES (:fname,:lname,:position,:employee_role,:department_id)";
+        String sql = "INSERT INTO users (fname,lname,position,employee_role,department_id) VALUES (:fname,:lname,:position,:employee_role,:department_id)";
         try(Connection con = sql2o.open()){
             int employee_id = (int) con.createQuery(sql, true)
                     .bind(user)

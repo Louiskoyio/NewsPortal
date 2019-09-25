@@ -13,11 +13,11 @@ public class News {
     private String news_content;
     private String posted_on;
 
-    public News(String posted_by, int department_id, String news_content, String posted_on) {
+    public News(String posted_by, int department_id, String news_content) {
         this.posted_by = posted_by;
         this.department_id = department_id;
         this.news_content = news_content;
-        this.posted_on = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss").format(new Date());
+
     }
 
     public int getNews_id() {

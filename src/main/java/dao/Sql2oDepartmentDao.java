@@ -17,7 +17,7 @@ public class Sql2oDepartmentDao implements DepartmentDao{
 
     @Override
     public void add(Department department) {
-        String sql = "INSERT INTO department (name,objective) VALUES (:name,:objective)";
+        String sql = "INSERT INTO departments (department_name,description) VALUES (:department_name,:description)";
         try(Connection con = sql2o.open()){
             int department_id = (int) con.createQuery(sql, true)
                     .bind(department)
