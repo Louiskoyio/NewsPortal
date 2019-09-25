@@ -24,6 +24,7 @@ public class App {
         newsDao = new Sql2oNewsDao(sql2o);
         conn = sql2o.open();
 
+        //works
         post("/users/new", "application/json", (req, res) -> {
             User user = gson.fromJson(req.body(), User.class);
             userDao.add(user);
@@ -32,6 +33,7 @@ public class App {
             return gson.toJson(user);
         });
 
+        //works
         post("/news/new", "application/json", (req, res) -> {
             News news = gson.fromJson(req.body(), News.class);
             newsDao.add(news);
