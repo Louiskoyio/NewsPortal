@@ -63,6 +63,7 @@ public class App {
             return gson.toJson(newsDao.getAll());
         });
 
+        //works
         get("/users/:employee_id", "application/json", (req, res) -> {
             res.type("application/json");
             int employee_id = Integer.parseInt(req.params("employee_id"));
