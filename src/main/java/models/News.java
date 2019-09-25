@@ -11,7 +11,7 @@ public class News {
     private String posted_by;
     private int department_id;
     private String news_content;
-    private String posted_on;
+
 
     public News(String posted_by, int department_id, String news_content) {
         this.posted_by = posted_by;
@@ -52,14 +52,6 @@ public class News {
         this.news_content = news_content;
     }
 
-    public String getPosted_on() {
-        return posted_on;
-    }
-
-    public void setPosted_on(long posted_on) {
-        this.posted_on = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss").format(new Date());
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,12 +60,11 @@ public class News {
         return news_id == news.news_id &&
                 Objects.equals(posted_by, news.posted_by) &&
                 Objects.equals(department_id, news.department_id) &&
-                Objects.equals(news_content, news.news_content) &&
-                Objects.equals(posted_on, news.posted_on);
+                Objects.equals(news_content, news.news_content);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(news_id, posted_by, department_id, news_content, posted_on);
+        return Objects.hash(news_id, posted_by, department_id, news_content);
     }
 }

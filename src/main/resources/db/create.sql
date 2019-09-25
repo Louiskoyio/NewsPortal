@@ -1,7 +1,7 @@
 SET MODE PostgreSQL;
 
 CREATE TABLE IF NOT EXISTS departments (
-department_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+department_id int PRIMARY KEY AUTO_INCREMENT,
 department_name VARCHAR,
 description VARCHAR);
 
@@ -18,11 +18,9 @@ employee_id int PRIMARY KEY AUTO_INCREMENT,
 CREATE TABLE IF NOT EXISTS news (
 news_id int PRIMARY KEY AUTO_INCREMENT,
  posted_by VARCHAR,
-  department_id INTEGER,
-   news_content VARCHAR,
-   posted_on TIMESTAMP
+  department_id VARCHAR,
+   news_content VARCHAR
     );
-
 
 /*
 
