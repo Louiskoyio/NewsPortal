@@ -40,6 +40,7 @@ public class App {
             return gson.toJson(news);
         });
 
+        //works
         post("/departments/new", "application/json", (req, res) -> {
             Department department = gson.fromJson(req.body(), Department.class);
             departmentDao.add(department);
