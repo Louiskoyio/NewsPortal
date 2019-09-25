@@ -12,7 +12,7 @@ employee_id int PRIMARY KEY AUTO_INCREMENT,
   lname VARCHAR,
    position VARCHAR,
     employee_role VARCHAR,
-     department_id INTEGER
+     department_id int
      );
 
 CREATE TABLE IF NOT EXISTS news (
